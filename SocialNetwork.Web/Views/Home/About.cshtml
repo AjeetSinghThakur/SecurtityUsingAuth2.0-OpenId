@@ -1,0 +1,25 @@
+﻿@using Microsoft.AspNetCore.Authentication
+
+<div>
+    <strong>id_token</strong>
+    <span>@await Microsoft.AspNetCore.Authentication.AuthenticationHttpContextExtensions.GetTokenAsync(ViewContext.HttpContext,"id_token")</span>
+</div>
+
+<div>
+    <strong>access_token</strong>
+    <span>@await Microsoft.AspNetCore.Authentication.AuthenticationHttpContextExtensions.GetTokenAsync(ViewContext.HttpContext, "access_token")</span>
+</div>
+
+<div>
+    <strong>refresh_token</strong>
+    <span>@await Microsoft.AspNetCore.Authentication.AuthenticationHttpContextExtensions.GetTokenAsync(ViewContext.HttpContext, "refresh_token")</span>
+</div>
+
+
+@foreach (var claim in User.Claims)
+{
+    <div>
+        <strong>@claim.Type: </strong>
+        <span>@claim.Value</span>
+    </div>
+}
